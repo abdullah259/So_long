@@ -25,12 +25,15 @@ int main(int arc,char **argv)
         int j;
         int compa;
         char **sp;
+        char *tmp;
 
         j = 0;
         check_par(argv[1]);
-        map(argv[1]);
+        tmp = map(argv[1]);
+        if (!tmp)
+            return (0);
         sp = ft_split(map(argv[1]),'\n');
-        free(map(argv[1]));
+        free(tmp);
         compa = check_fl(sp);
         j++;
         j = check_mid(sp,compa,j,&img);

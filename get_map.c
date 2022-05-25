@@ -7,6 +7,8 @@ char    *map(char *argv)
     char *s;
 
     fd = open(argv,O_RDONLY);
+    if (fd < 0)
+        return (NULL);
     new = ft_strdup("");
     s = get_next_line(fd);
     while(s)
