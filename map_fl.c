@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-int     check_fl(char **sp)
+int     check_fl(t_data *img)
 {
 	int j;
 	int g;
@@ -9,12 +9,12 @@ int     check_fl(char **sp)
 	comp = 0;
 	j = 0;
 	g = 0;
-	while (sp[j][g])
+	while (img->map[j][g])
 	{
-		if (sp[j][g] != '1')
+		if (img->map[j][g] != '1')
 		{
-			// write(1,"ERROR PLEASE FL\n",16);
 			write(1,"invalid argment\n",16);
+			free_sp(img->map);
 			exit(1);
 		}
 		g++;

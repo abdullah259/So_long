@@ -17,16 +17,19 @@ void	check_c_p_e(t_data *img)
 	if (img->for_c <= 0)
 	{
 		write(1, "Error, : You have to have at least one collection.\n", 51);
+		free_sp(img->map);
 		exit(1);
 	}
 	if (img->e != 1)
 	{
 		write(1, "Error, : You have to have at least one Exit.\n", 45);
+		free_sp(img->map);
 		exit(1);
 	}
 	if (img->p != 1)
 	{
 		write(1, "Error, : You have to have at least one player.\n", 47);
+		free_sp(img->map);
 		exit(1);
 	}
 }

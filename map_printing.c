@@ -30,8 +30,6 @@ void	print_map(t_data *img)
 	int i;
 	int y;
 
-	img->x = 0;
-	img->y = 0;
 	i = 0;
 	y = 0;
 	while (img->map[i])

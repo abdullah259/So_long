@@ -38,12 +38,12 @@ typedef struct	s_data {
 	int		p;
 	int		i;
 }	t_data;
-char 	**every_thing_ok(char **sp, int for_c,int j);
+void 	every_thing_ok(t_data *img,int for_c, int j);
 char    **ft_split(char const *s, char c);
 void    check_par(char *s);
-int     check_fl(char **sp);
-int    check_mid(char **sp, int compa,int j,t_data *img);
-void    check_last(char **sp, int comp, int j);
+int     check_fl(t_data *img);
+int    check_mid(int compa,int j,t_data *img);
+void    check_last(t_data *img,int comp,int j);
 char    *map(char *argv);
 void	move_y(char c, t_data *img);
 void	move_x(char c, t_data *img);
@@ -55,4 +55,5 @@ void	print_map(t_data *img);
 void 	ft_putnbr(int n);
 void	check_c_p_e(t_data *img);
 void    destroy(t_data *img);
+void	free_sp(char **s);
 #endif

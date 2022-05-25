@@ -1,7 +1,7 @@
 #include "so_long.h"
 #include "get_next_line.h"
 
-void	init(t_data *img)
+void	ft_init(t_data *img)
 {
 	img->check_exit = 0;
 	img->for_c = 0;
@@ -24,21 +24,21 @@ int main(int arc,char **argv)
 		t_data img;
 		int j;
 		int compa;
-		char **sp;
 		char *tmp;
+		ft_init(&img);
 
 		j = 0;
 		check_par(argv[1]);
 		tmp = map(argv[1]);
 		if (!tmp)
 			return (0);
-		sp = ft_split(map(argv[1]),'\n');
+		img.map = ft_split(map(argv[1]),'\n');
 		free(tmp);
-		compa = check_fl(sp);
+		compa = check_fl(&img);
 		j++;
-		j = check_mid(sp,compa,j,&img);
-		check_last(sp,compa,j);
-		every_thing_ok(sp,img.for_c,j);
+		j = check_mid(compa,j,&img);
+		check_last(&img, compa,j);
+		every_thing_ok(&img,img.for_c,j);
 		exit(1);
 	}
 	printf("invalid argment\n");
