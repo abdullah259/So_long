@@ -19,28 +19,28 @@ void	init(t_data *img)
 
 int main(int arc,char **argv)
 {
-    if (arc == 2)
-    {
-        t_data img;
-        int j;
-        int compa;
-        char **sp;
-        char *tmp;
+	if (arc == 2)
+	{
+		t_data img;
+		int j;
+		int compa;
+		char **sp;
+		char *tmp;
 
-        j = 0;
-        check_par(argv[1]);
-        tmp = map(argv[1]);
-        if (!tmp)
-            return (0);
-        sp = ft_split(map(argv[1]),'\n');
-        free(tmp);
-        compa = check_fl(sp);
-        j++;
-        j = check_mid(sp,compa,j,&img);
-        check_last(sp,compa,j);
-        every_thing_ok(sp,img.for_c,j);
-        exit(1);
-    }
-    printf("invalid argment\n");
-    return 0;
+		j = 0;
+		check_par(argv[1]);
+		tmp = map(argv[1]);
+		if (!tmp)
+			return (0);
+		sp = ft_split(map(argv[1]),'\n');
+		free(tmp);
+		compa = check_fl(sp);
+		j++;
+		j = check_mid(sp,compa,j,&img);
+		check_last(sp,compa,j);
+		every_thing_ok(sp,img.for_c,j);
+		exit(1);
+	}
+	printf("invalid argment\n");
+	return 0;
 }
