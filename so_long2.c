@@ -1,5 +1,5 @@
-# include "so_long.h"
-# include "get_next_line.h"
+#include "so_long.h"
+#include "get_next_line.h"
 
 void	init(t_data *img)
 {

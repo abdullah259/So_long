@@ -1,4 +1,4 @@
-# include "so_long.h"
+#include "so_long.h"
 
 void	move_y(char c, t_data *img)
 {
