@@ -39,7 +39,7 @@ typedef struct	s_data {
 	int		i;
 }	t_data;
 void 	every_thing_ok(t_data *img,int for_c, int j);
-char    **ft_split(char const *s, char c);
+char	**ft_split(char const *s, char c, int *x);
 void    check_par(char *s);
 int     check_fl(t_data *img);
 int    check_mid(int compa,int j,t_data *img);

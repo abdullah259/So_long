@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aghazi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: aghazi <aghazi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 18:53:04 by aghazi            #+#    #+#             */
-/*   Updated: 2022/05/24 19:06:47 by aghazi           ###   ########.fr       */
+/*   Updated: 2022/05/26 17:24:24 by aghazi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,22 @@
 #include "so_long.h"
 #include "get_next_line.h"
 
-void	check(char s, char c, char s1)
+void	check(char s, char c, char s1,int *x)
 {
 	if (s == c && s1 == c)
 	{
 		write(1, "There is two newline\n", 21);
-		exit(1);
+        
+		*x = 2;
 	}
 	if (s == c && s1 == '\0')
 	{
 		write(1, "error newline then null\n", 24);
-		exit(1);
+		*x = 2;
 	}
 }
 
-static	int	word_count(char *s, char c)
+static	int	word_count(char *s, char c, int *x)
 {
 	int	i;
 	int	w;
@@ -50,7 +51,7 @@ static	int	word_count(char *s, char c)
 		}
 		else if (s[i] == c)
 			w = 0;
-		check(s[i], c, s[i + 1]);
+		check(s[i], c, s[i + 1],x);
 		i++;
 	}
 	return (j);
@@ -69,22 +70,13 @@ static	int	length_str(char *s, char c, int start)
 	}
 	return (i);
 }
-
-char	**ft_split(char const *s, char c)
+char    **fill_str(char *s, char c, int i, char **ptr)
 {
-	char	**ptr;
-	int		i;
-	int		j;
-	int		k;
+    int j;
+    int k;
 
-	k = 0;
-	j = 0;
-	i = 0;
-	ptr = malloc((word_count((char *)s, c) + 1) * sizeof(char *));
-	if (!ptr)
-		return (NULL);
-	while (s[i] == c)
-		i++;
+    j = 0;
+    k = 0;
 	while (s[i])
 	{
 		ptr[j] = malloc((length_str((char *)s, c, i) + 1) * sizeof(char));
@@ -101,5 +93,23 @@ char	**ft_split(char const *s, char c)
 			i++;
 	}
 	ptr[j] = NULL;
+    return (ptr);
+}
+char	**ft_split(char const *s, char c, int *x)
+{
+	char	**ptr;
+	int		i;
+	// int		j;
+	// int		k;
+
+	// k = 0;
+	// j = 0;
+	i = 0;
+	ptr = malloc((word_count((char *)s, c,x) + 1) * sizeof(char *));
+	if (!ptr)
+		return (NULL);
+	while (s[i] == c)
+		i++;
+    ptr = fill_str((char*)s, c, i, ptr);
 	return (ptr);
 }

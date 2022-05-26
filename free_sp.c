@@ -5,10 +5,10 @@ void	free_sp(char **s)
 	int	p;
 
 	p = 0;
-	while (p >= 0)
+	while (s[p])
 	{
 		free(s[p]);
-		p--;
+		p++;
 	}
 	free(s);
 	exit(0);

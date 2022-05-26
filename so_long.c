@@ -40,6 +40,7 @@ int		ft_close(t_data *img)
 	int p;
 
 	p = img->i;
+    printf("i ===== %i\n", img->i);
 	mlx_destroy_image(img->mlx,img->img_wall);
 	mlx_destroy_image(img->mlx,img->img_bg);
 	mlx_destroy_image(img->mlx,img->img_coll);
