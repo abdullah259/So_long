@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aghazi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/24 18:48:46 by aghazi            #+#    #+#             */
+/*   Updated: 2022/05/24 18:50:35 by aghazi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 char	*ft_strjoin(char *s1, char *s2)
@@ -96,7 +108,7 @@ char	*gnl_helper(char *store, int fd)
 
 	str = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!str)
-		return(NULL);
+		return (NULL);
 	bytes = 1;
 	while (bytes != 0 && !ft_strchr(store, '\n'))
 	{
@@ -105,7 +117,7 @@ char	*gnl_helper(char *store, int fd)
 		{
 			free(str);
 			str = NULL;
-			write(1,"this is not a map\n",18);
+			write (1, "this is not a map\n", 18);
 			exit(1);
 		}
 		str[bytes] = 0;

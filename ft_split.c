@@ -16,12 +16,11 @@
 #include "so_long.h"
 #include "get_next_line.h"
 
-void	check(char s, char c, char s1,int *x)
+void	check(char s, char c, char s1, int *x)
 {
 	if (s == c && s1 == c)
 	{
 		write(1, "There is two newline\n", 21);
-        
 		*x = 2;
 	}
 	if (s == c && s1 == '\0')
@@ -51,7 +50,7 @@ static	int	word_count(char *s, char c, int *x)
 		}
 		else if (s[i] == c)
 			w = 0;
-		check(s[i], c, s[i + 1],x);
+		check(s[i], c, s[i + 1], x);
 		i++;
 	}
 	return (j);
@@ -70,16 +69,19 @@ static	int	length_str(char *s, char c, int start)
 	}
 	return (i);
 }
-char    **fill_str(char *s, char c, int i, char **ptr)
-{
-    int j;
-    int k;
 
-    j = 0;
-    k = 0;
+char	**fill_str(char *s, char c, int i, char **ptr)
+{
+	int	j;
+	int	k;
+
+	j = 0;
+	k = 0;
 	while (s[i])
 	{
 		ptr[j] = malloc((length_str((char *)s, c, i) + 1) * sizeof(char));
+		if (!ptr)
+			return (NULL);
 		k = 0;
 		while (s[i] != c && s[i])
 		{
@@ -93,23 +95,20 @@ char    **fill_str(char *s, char c, int i, char **ptr)
 			i++;
 	}
 	ptr[j] = NULL;
-    return (ptr);
+	return (ptr);
 }
+
 char	**ft_split(char const *s, char c, int *x)
 {
 	char	**ptr;
 	int		i;
-	// int		j;
-	// int		k;
 
-	// k = 0;
-	// j = 0;
 	i = 0;
-	ptr = malloc((word_count((char *)s, c,x) + 1) * sizeof(char *));
+	ptr = malloc((word_count((char *)s, c, x) + 1) * sizeof(char *));
 	if (!ptr)
 		return (NULL);
 	while (s[i] == c)
 		i++;
-    ptr = fill_str((char*)s, c, i, ptr);
+	ptr = fill_str((char *) s, c, i, ptr);
 	return (ptr);
 }
