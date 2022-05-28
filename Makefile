@@ -3,7 +3,7 @@ CFLAGS = -Werror -Wextra -Wall -g
 
 NAME=so_long
 
-SRC = so_long.c so_long2.c get_next_line.c get_next_line_utils.c ft_split.c parsing.c map_fl.c map_mid.c map_last_l.c get_map.c \
+SRC = so_long.c game.c get_next_line.c get_next_line_utils.c ft_split.c parsing.c map_fl.c map_mid.c map_last_l.c get_map.c \
       moving.c checking.c map_printing.c ft_putnbr.c check_rules.c destroy.c free_sp.c
 
 OBJ = $(SRC:.c=.o)
